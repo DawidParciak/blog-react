@@ -9,11 +9,12 @@ const Post = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const postData = useSelector((state) => getPostById(state, id));
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   const handleRemove = e => {
     e.preventDefault();
     dispatch(removePost(id));
