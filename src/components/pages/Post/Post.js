@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Col, Row, Card, Button, Stack, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { getPostById, removePost } from "../../../redux/postsRedux";
+import { getPostById, removePost, convertedDate } from "../../../redux/postsRedux";
 
 const Post = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
   const postData = useSelector((state) => getPostById(state, id));
+  let date = convertedDate(postData.publishedDate);
 
   const [show, setShow] = useState(false);
 
@@ -21,7 +22,7 @@ const Post = () => {
     handleClose();
   };
 
-  if(!postData) return <Navigate to="/" />
+  if(!postData) return <Navigate to='/' />
   else return (
     <section>
       <Row className="justify-content-center">
@@ -47,7 +48,7 @@ const Post = () => {
                 Author: <span className="fw-normal">{postData.author}</span>
               </Card.Subtitle>
               <Card.Subtitle className="pt-2 fw-bold">
-                Published: <span className="fw-normal">{postData.publishedDate}</span>
+                Published: <span className="fw-normal">{date}</span>
               </Card.Subtitle>
               <Card.Text className="pt-4">
                 {postData.content}
