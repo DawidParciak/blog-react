@@ -17,7 +17,7 @@ const PostAddForm = props => {
 
   const dispatch = useDispatch();
   const postId = props.id
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
