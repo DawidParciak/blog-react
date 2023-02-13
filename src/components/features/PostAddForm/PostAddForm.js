@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPost } from "../../../redux/postsRedux";
 import { useNavigate } from "react-router-dom";
+import moment from "moment/moment";
 
 const PostAddForm = props => {
 
@@ -11,6 +12,8 @@ const PostAddForm = props => {
   const [publishedDate, setPublishedDate] = useState('');
   const [shortDescription, setShortDescription] = useState('');
   const [content, setContent] = useState('');
+
+  const convertedDate = moment(publishedDate).format("DD-MM-YYYY");
 
   const dispatch = useDispatch();
   const postId = props.id
@@ -21,7 +24,7 @@ const PostAddForm = props => {
     dispatch(addPost({
       title,
       author,
-      publishedDate,
+      publishedDate: convertedDate,
       shortDescription,
       content,
       postId,
@@ -53,7 +56,7 @@ const PostAddForm = props => {
         <Form.Label>Published</Form.Label>
         <Form.Control 
           value={publishedDate}
-          type="text" 
+          type="date"
           placeholder="Enter date" 
           onChange={e => setPublishedDate(e.target.value)} 
         />
