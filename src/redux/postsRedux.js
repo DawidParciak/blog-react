@@ -5,10 +5,7 @@ import moment from "moment";
 export const getAllPosts = state  => state.posts;
 export const getPostById = ({ posts }, postId) => 
   posts.find(post => post.id === postId);
-  
-export const getDateById = ({ publishedDate }, postId) =>
-  publishedDate(post => post.id === postId);
-export const convertedDate = getDateById => moment(getDateById).format("DD-MM-YYYY");
+export const convertedDate = getPostById => moment(getPostById).format("DD-MM-YYYY");
 
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
