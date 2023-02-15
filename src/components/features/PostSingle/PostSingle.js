@@ -1,10 +1,10 @@
+import moment from "moment";
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { convertedDate } from "../../../redux/postsRedux";
 
 const PostSingle = props => {
 
-  const date = convertedDate(props.publishedDate);
+  const date = moment(props.publishedDate).format("DD-MM-YYYY");
 
   return (
     <Col lg='4' md='6' xs='12' className="pb-4">

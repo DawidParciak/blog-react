@@ -16,7 +16,6 @@ const PostEditForm = () => {
     navigate('/')
   };
 
-
   if (!post) return <Navigate to={'/'} />
   else return (
     <PostForm 
