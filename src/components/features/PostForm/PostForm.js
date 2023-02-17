@@ -1,5 +1,9 @@
 import { Form, Button } from "react-bootstrap";
-import { useState } from "react";
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
 
 const PostForm = ({ action, actionText, ...props }) => {
 
@@ -42,11 +46,11 @@ const PostForm = ({ action, actionText, ...props }) => {
       </Form.Group>
       <Form.Group className="mb-3 col-lg-6" controlId="postPublishedDate">
         <Form.Label>Published</Form.Label>
-        <Form.Control 
-          value={publishedDate}
-          type="date"
-          placeholder="Enter date" 
-          onChange={e => setPublishedDate(e.target.value)} 
+        <DatePicker
+          selected={publishedDate}
+          placeholderText="  Enter date"
+          onChange={(date) => setPublishedDate(date)} 
+          required
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="postShortDescription">
@@ -60,12 +64,11 @@ const PostForm = ({ action, actionText, ...props }) => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="postContent">
         <Form.Label>Main content</Form.Label>
-        <Form.Control 
+        <ReactQuill
           value={content}
-          as="textarea" 
           placeholder="Leave a comment here" 
-          rows="6" 
-          onChange={e => setContent(e.target.value)}
+          onChange={setContent}
+          theme="snow"
         />
       </Form.Group>
       <Button variant="primary" type="submit">

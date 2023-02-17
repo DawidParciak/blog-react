@@ -1,10 +1,8 @@
-import moment from "moment";
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import dateToStr from "../../../utils/dateToStr";
 
 const PostSingle = props => {
-
-  const date = moment(props.publishedDate).format("DD-MM-YYYY");
 
   return (
     <Col lg='4' md='6' xs='12' className="pb-4">
@@ -20,7 +18,7 @@ const PostSingle = props => {
           </Card.Subtitle>
 
           <Card.Subtitle className="py-1 fw-bold">
-            Published: <span className="fw-normal">{date}</span>
+            Published: <span className="fw-normal">{dateToStr(props.publishedDate)}</span>
           </Card.Subtitle>
 
           <Card.Text className="pt-3">

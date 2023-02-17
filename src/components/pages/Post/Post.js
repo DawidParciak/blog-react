@@ -1,9 +1,9 @@
-import moment from "moment";
 import { useState } from "react";
 import { Col, Row, Card, Button, Stack, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { getPostById, removePost } from "../../../redux/postsRedux";
+import dateToStr from "../../../utils/dateToStr";
 
 const Post = () => {
 
@@ -48,10 +48,10 @@ const Post = () => {
                 Author: <span className="fw-normal">{postData.author}</span>
               </Card.Subtitle>
               <Card.Subtitle className="pt-2 fw-bold">
-                Published: <span className="fw-normal">{ moment(postData.publishedDate).format("DD-MM-YYYY") }</span>
+                Published: <span className="fw-normal">{dateToStr(postData.publishedDate)}</span>
               </Card.Subtitle>
               <Card.Text className="pt-4">
-                {postData.content}
+                <p dangerouslySetInnerHTML={{ __html: postData.content }} />
               </Card.Text>
             </Card.Body>
           </Card>
