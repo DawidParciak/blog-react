@@ -21,6 +21,10 @@ const PostSingle = props => {
             Published: <span className="fw-normal">{dateToStr(props.publishedDate)}</span>
           </Card.Subtitle>
 
+          <Card.Subtitle className="py-1 fw-bold">
+            Category: <span className="fw-normal">{props.category}</span>
+          </Card.Subtitle>
+
           <Card.Text className="pt-3">
             {props.shortDescription}
           </Card.Text>

@@ -11,6 +11,7 @@ const PostForm = ({ action, actionText, ...props }) => {
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');
   const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
+  const [category, setCategory] = useState(props.category || '');
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
   const [contentError, setContentError] = useState(false);
@@ -26,6 +27,7 @@ const PostForm = ({ action, actionText, ...props }) => {
         title, 
         author, 
         publishedDate, 
+        category,
         shortDescription, 
         content 
       });
@@ -65,6 +67,15 @@ const PostForm = ({ action, actionText, ...props }) => {
           onChange={(date) => setPublishedDate(date)} 
         />
         {dateError && <small className="d-block form-text text-danger mt-2">Date can't be empty</small>}
+      </Form.Group>
+      <Form.Group className="mb-3 col-lg-6" controlId="category">
+        <Form.Label>Category</Form.Label>
+        <Form.Select value={category} onChange={e => setCategory(e.target.value)}>
+          <option>Select category</option>
+          <option>Sport</option>
+          <option>News</option>
+          <option>Movies</option>
+        </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3" controlId="postShortDescription">
         <Form.Label>Short description</Form.Label>

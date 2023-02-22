@@ -50,8 +50,10 @@ const Post = () => {
               <Card.Subtitle className="pt-2 fw-bold">
                 Published: <span className="fw-normal">{dateToStr(postData.publishedDate)}</span>
               </Card.Subtitle>
-              <Card.Text className="pt-4" dangerouslySetInnerHTML={{ __html: postData.content }}>
-              </Card.Text>
+              <Card.Subtitle className="pt-2 fw-bold">
+                Category: <span className="fw-normal">{postData.category}</span>
+              </Card.Subtitle>
+              <Card.Text className="pt-4" dangerouslySetInnerHTML={{ __html: postData.content }} />
             </Card.Body>
           </Card>
           <Modal show={show} onHide={handleClose}>
