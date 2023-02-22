@@ -59,11 +59,12 @@ const PostForm = ({ action, actionText, ...props }) => {
       <Form.Group className="mb-3 col-lg-6" controlId="postPublishedDate">
         <Form.Label>Published</Form.Label>
         <DatePicker
+          className="form-control"
           selected={publishedDate}
-          placeholderText="  Enter date"
+          placeholderText="Enter date"
           onChange={(date) => setPublishedDate(date)} 
         />
-        {dateError && <small className="d-block form-text text-danger mt-2">This field is required</small>}
+        {dateError && <small className="d-block form-text text-danger mt-2">Date can't be empty</small>}
       </Form.Group>
       <Form.Group className="mb-3" controlId="postShortDescription">
         <Form.Label>Short description</Form.Label>
@@ -82,7 +83,6 @@ const PostForm = ({ action, actionText, ...props }) => {
           value={content}
           placeholder="Leave a comment here" 
           onChange={setContent}
-          theme="snow"
         />
         {contentError && <small className="d-block form-text text-danger mt-2">Content can't be empty</small>}
       </Form.Group>

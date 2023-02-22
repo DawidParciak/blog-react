@@ -50,8 +50,7 @@ const Post = () => {
               <Card.Subtitle className="pt-2 fw-bold">
                 Published: <span className="fw-normal">{dateToStr(postData.publishedDate)}</span>
               </Card.Subtitle>
-              <Card.Text className="pt-4">
-                <p dangerouslySetInnerHTML={{ __html: postData.content }} />
+              <Card.Text className="pt-4" dangerouslySetInnerHTML={{ __html: postData.content }}>
               </Card.Text>
             </Card.Body>
           </Card>
