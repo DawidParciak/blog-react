@@ -5,6 +5,8 @@ import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { getAllCategories } from "../../../redux/categoryRedux";
 
 const PostForm = ({ action, actionText, ...props }) => {
 
@@ -16,13 +18,16 @@ const PostForm = ({ action, actionText, ...props }) => {
   const [content, setContent] = useState(props.content || '');
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
+  const [categoryError, setCategoryError] = useState(false);
+  const categories = useSelector(getAllCategories);
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
   const handleSubmit = () => {
     setContentError(!content)
     setDateError(!publishedDate)
-    if(content && publishedDate){
+    setCategoryError(!category)
+    if(content && publishedDate && category){
       action({ 
         title, 
         author, 
@@ -70,12 +75,18 @@ const PostForm = ({ action, actionText, ...props }) => {
       </Form.Group>
       <Form.Group className="mb-3 col-lg-6" controlId="category">
         <Form.Label>Category</Form.Label>
-        <Form.Select value={category} onChange={e => setCategory(e.target.value)}>
-          <option>Select category</option>
-          <option>Sport</option>
-          <option>News</option>
-          <option>Movies</option>
+        <Form.Select 
+          {...register('category', { required: true })}
+          value={category} 
+          onChange={e => setCategory(e.target.value)}>
+            <option>Select category</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
         </Form.Select>
+        {categoryError && <small className="d-block form-text text-danger mt-2">Select correct category</small>}
       </Form.Group>
       <Form.Group className="mb-3" controlId="postShortDescription">
         <Form.Label>Short description</Form.Label>

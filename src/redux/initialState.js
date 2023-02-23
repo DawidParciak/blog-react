@@ -28,6 +28,13 @@ const initialState ={
       category: 'Sport',
     },
   ],
+
+  categories: [
+    'Sport',
+    'News',
+    'Movies',
+    'Music',
+  ]
 };
 
 export default initialState;
