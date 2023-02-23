@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllCategories } from "../../../redux/categoryRedux";
 
-const Categories = () => {
+const Categories = props => {
 
   const allCategories = useSelector(getAllCategories);
 
@@ -14,7 +14,7 @@ const Categories = () => {
           <Col className="px-0 pb-1">
             <Card>
               <Link to={`/categories/${category}`} className="text-decoration-none">
-                <Card.Body className="text-center text-uppercase fs-2 text-muted">
+                <Card.Body className="text-center text-uppercase fs-2 text-muted" key={props.id}>
                   {category}
                 </Card.Body>
               </Link>

@@ -29,7 +29,7 @@ const PostSingle = props => {
             {props.shortDescription}
           </Card.Text>
 
-          <Link key={props.id} to={'post/' + props.id}>
+          <Link key={props.id} to={'/post/' + props.id}>
             <Button variant="primary">
               Read more
             </Button>
