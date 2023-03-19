@@ -10,17 +10,26 @@ const Category = () => {
   const postByCategory = useSelector(state =>
     getPostByCategory(state, category)
   );
+  const emptyPosts = postByCategory.length === 0;
+  
 
   return (
     <Container className="px-0">
       <div>
         <h2>Category: {category}</h2>
       </div>
-      <Row  className="py-4">
-        {postByCategory.map(post => (
-          <PostSingle  key={post.id} {...post} />
-        ))}
-      </Row>
+      {!emptyPosts &&
+        <Row  className="py-4">
+          {postByCategory.map(post => (
+            <PostSingle  key={post.id} {...post} />
+          ))}
+        </Row>
+      }
+      {emptyPosts &&
+        <div className="py-4">
+          <h5>No posts in this category</h5>
+        </div>
+      }
     </Container>
   );
 };
