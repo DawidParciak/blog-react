@@ -76,10 +76,10 @@ const PostForm = ({ action, actionText, ...props }) => {
       <Form.Group className="mb-3 col-lg-6" controlId="category">
         <Form.Label>Category</Form.Label>
         <Form.Select 
-          {...register('category', { required: true })}
+          {...register('category', {})}
           value={category} 
           onChange={e => setCategory(e.target.value)}>
-            <option>Select category</option>
+            <option value="" disabled selected hidden className="text-primary">Select category</option>
             {categories.map((category, index) => (
               <option key={index} value={category}>
                 {category}
