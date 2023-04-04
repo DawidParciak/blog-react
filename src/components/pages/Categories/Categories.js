@@ -10,8 +10,8 @@ const Categories = props => {
   return (
     <Container>
       <Row xs={1} className="">
-        {allCategories.map( category => (
-          <Col className="px-0 pb-1" key={props.id}>
+        {allCategories.map((category, index => (
+          <Col className="px-0 pb-1" key={`category-${index}`}>
             <Card>
               <Link to={`/categories/${category}`} className="text-decoration-none">
                 <Card.Body className="text-center text-uppercase fs-2 text-muted">
