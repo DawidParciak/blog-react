@@ -11,10 +11,10 @@ const Categories = props => {
     <Container>
       <Row xs={1} className="">
         {allCategories.map( category => (
-          <Col className="px-0 pb-1">
+          <Col className="px-0 pb-1" key={props.id}>
             <Card>
               <Link to={`/categories/${category}`} className="text-decoration-none">
-                <Card.Body className="text-center text-uppercase fs-2 text-muted" key={props.id}>
+                <Card.Body className="text-center text-uppercase fs-2 text-muted">
                   {category}
                 </Card.Body>
               </Link>
